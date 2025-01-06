@@ -30,10 +30,16 @@ There are advantages and disadvantages to using Wikibase over Wikidata, dependin
 
 Wikibase can also offer a good opportunity to experiment with Wikidata's core functionalities, without interacting with or editing Wikidata's information in the process. 
 
-On the other hand, one of the core attractions of Wikidata is its open nature and interoperability. The custom ontologies created by Wikibase instances can sometimes make it difficult to link records across instances, although facilitating precisely those links has been the concern of one recent project, [Wikibase World](https://wikibase.world/wiki/Project:Home).  
+On the other hand, one of the core attractions of Wikidata is its open nature and interoperability. The custom ontologies created by Wikibase instances, meanwhile, can sometimes make it difficult to link records across instances. Facilitating precisely those links has been the concern of one recent project, [Wikibase World](https://wikibase.world/wiki/Project:Home).
 
-# Congruence Engine experiments 
-Congruence Engine worked with
+# Congruence Engine 
+Congruence Engine worked with Wikidata and Wikibase at several points in time and across multiple investigations. This tutorial emerged out of experiments conducted by the team which sought to understand how museum professionals and other interested individuals might use Wikidata as a way to facilitate links across museum collections. For this work, we experimented with a sample of objects drawn from three museum collections:
+* Bradford Industrial Museum
+* National Wool Museum, Wales
+* Science Museum, London
+
+
+
 
 # Preparing your data
 
