@@ -30,13 +30,15 @@ Investigation, Data curation, Formal analysis, Methodology, Writing
 
 ## Investigation methods/ tools/ code/ software (used or developed)
 - Wikidata 
-- Quick Statements 
+- QuickStatements 
 - Open Refine
+- Chat GPT
 
 
 ## Outputs
 
-- Google Colab tutorials and notebooks on the above tools
+- Tutorial for museum professionals on how to upload batches of items to Wikidata
+- Upcoming book chapter in Congruence Engine edited collection. 
 
 
 
