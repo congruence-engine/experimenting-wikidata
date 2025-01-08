@@ -1,7 +1,7 @@
 # Wikidata Tutorial - Congruence Engine
 
 ## Overview
-This brief tutorial outlines steps taken by the Congruence Engine team to upload batches of museum objects and related terms to Wikidata. It is intended for museum professionals and other researchers interested in making their collections more linkable and accessible, in line with the principles of Linked Open Data. 
+This tutorial outlines steps taken by the Congruence Engine team to upload batches of museum objects and related terms to Wikidata. It is intended for museum professionals and other researchers interested in making their collections more linkable and accessible, in line with the principles of Linked Open Data. 
 
 
 ## What is Wikidata?
@@ -59,10 +59,10 @@ The first step for establishing the relationship between your data and that whic
 In the context of uploading material to Wikidata, reconciling is a particularly important step because it minimises the risk of a user adding terms that already exist into the knowledge base. 
 
 ### Steps
-1. Load your file into OpenRefine. If you want to test with an example file, you can use [this one](general_items_QuickStatements).
-2. Identify the column containing the terms which you wish to reconcile. In our case, this is the one titled 'object_label'. Click on the blue triangle beside the column label, and select 'Reconcile' > 'Start reconciling...'. 
+1. Load your file into OpenRefine. If you want to test with an example file, you can use [this one](https://github.com/congruence-engine/experimenting-wikidata/blob/main/general_items_QuickStatements.xlsx).
+2. Identify the column containing the terms which you wish to reconcile. In our case, this is the one titled 'object_label'. Click on the blue triangle beside the column label, and select 'Reconcile' > 'Start reconciling...'. [View screenshot](https://github.com/congruence-engine/experimenting-wikidata/blob/main/images/1.png)
 3. You will now be asked to select a service to reconcile against. Select 'Wikidata reconci.link' (usually the first option). Click next. 
-4. You will be prompted to select an entity 'type' to reconcile your terms against. This can help to ensure that you don't get as many false positives, but it is not always necessary. For this test we will select 'Reconcile against no particular type'. Make sure also that the 'Auto-match candidates with high confidence' box is selected.
+4. You will be prompted to select an entity 'type' to reconcile your terms against. This can help to ensure that you don't get as many false positives, but it is not always necessary. For this test we will select 'Reconcile against no particular type'. Make sure also that the 'Auto-match candidates with high confidence' box is selected. [View screenshot](https://github.com/congruence-engine/experimenting-wikidata/blob/main/images/3.png)
 5. You can now click 'Start reconciling...', and the reconciliation will start to work its magic. A yellow box at the top of the page will show progress as a percentage.  
 6. Once the reconciliation is finished, you can view your results.
 7. For those instances where there is a clear match, the term will now be viewable as a blue link. You can peek at the matched Wikidata item by hovering over these links, or you can investigate the full Wikidata item by clicking on them. For entries where a match was not obvious, you will be presented with a list of potentials.
@@ -70,7 +70,7 @@ In the context of uploading material to Wikidata, reconciling is a particularly 
 
 Once you have reconciled all the available terms in your dataset, you can start creating new items for those items where no match was found. Please note that if you were using the sample spreadsheet discussed above, you will not be able to use this to create new items, as this includes only examples for which we have already created Wikidata items. 
 
-In order to export only the unmatched items, you can choose 'Reconcile' > 'Facets' > 'By judgement'. A box will appear to the left of the screen, enabling you to filter the data based on 'matched' and unmatched ('none') entities. Click on 'none' to show only the unmatched entities. Now, when you export a file type of your choice, you will be left with a new file with only the unmatched entities. You can use this new file to start preparing new Wikidata items. 
+In order to export only the unmatched items, you can choose 'Reconcile' > 'Facets' > 'By judgement'. A box will appear to the left of the screen {[View screenshot](https://github.com/congruence-engine/experimenting-wikidata/blob/main/images/2.png)}, enabling you to filter the data based on 'matched' and unmatched ('none') entities. Click on 'none' to show only the unmatched entities. Now, when you export a file type of your choice, you will be left with a new file with only the unmatched entities. You can use this new file to start preparing new Wikidata items. 
 
 **Note:** If you are using the reconciliation service simply to identify matches between your collections data and Wikidata, there are a few things that you can do with the post-reconciliation data in OpenRefine. The 'Reconcile' menu includes options to 'Copy reconciliation data' to a different column, or to add new columns with either the corresponding Qcodes ('add entity identifiers column...') or the URL to the matched Wikidata items ('add column with URLs of matched entities...'). 
 
@@ -132,10 +132,12 @@ The next step is to align the relevant values with Wikidata Qcodes. With small a
 
 Once you have populated as many fields as possible with the relevant Qcodes, importing into QuickStatements is fairly straightforward. There are several different ways of doing this, but we found that a CSV import is the simplest method. 
 
-The first thing to do is to rename your column headers with the relevant codes for each statement. Your first column should be named 'qid', and should be left blank when creating new Wikidata items. The other key headers are:
+The first thing to do is to rename your column headers with the relevant codes for each statement. Your first column should be named 'qid', and should be left blank when creating new Wikidata items. If editing existing Wikidata items, you should add the Qcodes here. The other key headers are:
 * Len: Label
 * Den: Description
 * Aen: Alias
+
+
 The -en suffix in each of these indicates that they are entered in English. You can find a complete list of Wikidata language codes [here](https://www.wikidata.org/wiki/Help:Wikimedia_language_codes/lists/all)
 
 Subsequent headers will indicate the property being added to an item. So, in our example above, our spreadsheet will now look like this:
@@ -145,7 +147,23 @@ Subsequent headers will indicate the property being added to an item. So, in our
 || Mona Lisa |  painting by Leonardo da Vinci |  Q3305213 |  Q142 |  Q762 |
 | | The Garden of Earthly Delights |  triptych by Hieronymus Bosch |  Q3305213 | Q29  | Q130531  |
 
-You can find a sample csv file with pre-populated headers [here](https://github.com/congruence-engine/experimenting-wikidata/blob/main/quickstatements_csv_template.csv).
+You can find a sample csv file with pre-populated headers [here](https://github.com/congruence-engine/experimenting-wikidata/blob/main/quickstatements_csv_template.csv). 
+
+Here we have only covered adding simple statements to Wikidata items: in many cases, you will also want to add qualifiers and sources. For more information on this, see the [QuickStatements documentation](https://www.wikidata.org/wiki/Help:QuickStatements).
+
+## Running QuickStatements
+**Warning: do not follow these steps unless you are certain that the items you are adding do not already exist on Wikidata. Failure to do so will result in duplicate items** 
+
+One you have formatted all of your input data, creating the new Wikidata items using QuickStatements is fairly simple. Follow these steps:
+1. Save your spreadsheet as a .csv file
+2. Log in to QuickStatements using your Wikimedia credentials
+3. Open the csv file in a text editor
+4. Copy the full file into your clipboard
+5. In the QuickStatements interface, select 'New Batch'
+6. Paste the contents of your clipboard into the interface. [See Screenshot](https://github.com/congruence-engine/experimenting-wikidata/blob/main/images/4.png)
+7. Click 'Import CSV Commands'. The interface should now show you a summary of the requested Wikidata edits. 
+8. If the edit summary looks good, go ahead and click 'Run'. A progress bar will show the status of your commands, with any errors showing up in red. 
+
 
 
 
