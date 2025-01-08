@@ -46,7 +46,7 @@ The key research questions of our experiment were as follows:
 * How can museum curators and researchers enhance Wikidata in order to better facilitate linkage?
 * What technical barriers exist currently which might prevent curators from contributing to Wikidata?
 
-The main focus of our work involved adding technical vocabulary about the textile industry to Wikidata, to demonstrate the value of this exercise for facilitating collections linkage. By enhancing vocabularies about museum artefacts that is freely available in Wikidata, we can contribute to the creation of richer links across cultural heritage collections. 
+The main focus of our work involved adding technical vocabulary about the textile industry to Wikidata, to demonstrate the value of this exercise for facilitating collections linkage. By enhancing vocabularies about museum artefacts that is freely available in Wikidata, we believe that can contribute to the creation of richer links across cultural heritage collections. We also added to Wikidata examples of individual items from museums collections, which served as model items for the general technical terms that we uploaded. 
 
 ## Preparing your data
 You may be reading this tutorial simply to get to grips with the basics, but you may also wish to try out some of the steps below on data of your own. All you will need is an excel spreadsheet with a list of terms - in our case we worked with the catalogue names of museum objects, but you could use a list of businesses, people, places etc. depending on your project. You will need to prepare these as an excel spreadsheet or CSV file, and it is good practice to assign unique identifiers to each term at this stage.  
