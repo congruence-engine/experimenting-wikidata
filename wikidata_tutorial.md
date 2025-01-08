@@ -9,11 +9,11 @@ This tutorial outlines steps taken by the Congruence Engine team to upload batch
 
 Each Wikidata entry consists of a series of 'statements' which align with the Resource Description Framework (RDF). These statements take the form of triples, which is a method of describing relationships across entities in a way that is machine-readable.
 
-To take one example, the Wikidata entry for Jan van Eyck's famous Arnolfini Portrait (Q127784950) contains the following statements:
-instance of -> painting
-inception -> 1434
-location -> National Gallery
-creator -> Jan van Eyck
+To take one example, the Wikidata entry for Jan van Eyck's famous *Arnolfini Portrait* (Q127784950) contains the following statements:
+* instance of -> painting
+* inception -> 1434
+* location -> National Gallery
+* creator -> Jan van Eyck. 
 
 Most of these represent links to other wikidata entries, making Wikidata a rich connected web of real-world entities and concepts. Unlike many controlled vocabularies and thesauruses which cultural heritage workers are familiar with, such as Getty's Art and Architecture Thesaurus (AAT), Wikidata does not have a way of representing hierarchies other than through the 'instance of' and 'subclass of' statements. For example, 'painting' is a subclass of 'two-dimensional visual work', which in turn is a subclass of 'visual artwork'. 'Painting' is thus connected (and hierarchically subsumed) to 'visual artwork', even while there is not a single statement or class that links the two directly. 
 
