@@ -19,8 +19,6 @@ Most of these represent links to other wikidata entries, making Wikidata a rich 
 
 In order to begin contributing to Wikidata, you will need to [create a wikidata account](https://www.wikidata.org/w/index.php?title=Special:CreateAccount&returnto=Wikidata%3AMain+Page). 
 
-## Wikidata's potential for cultural heritage organisations
-
 ## Wikidata or Wikibase?
 Depending on the size, scale, and intended use of your project, you may wish to create a separate Wikibase instead of uploading items directly to Wikidata. Wikibase is essentially the 'software' that underpins Wikidata, enabling you to upload and display structured data easily. Most of the same tools that we discuss later in this tutorial, including QuickStatements and the Query Service, can be run on Wikibase as well as Wikidata. Once you become comfortable in one, you will be able to perform the same actions in the other. Previously starting your own Wikibase required a fair amount of prior knowledge and infrastructure, but today it is possible to quickly set up Wikibase instances via [Wikibase Cloud](https://www.wikibase.cloud/). 
 
@@ -32,6 +30,8 @@ There are advantages and disadvantages to using Wikibase over Wikidata, dependin
 Wikibase can also offer a good opportunity to experiment with Wikidata's core functionalities, without interacting with or editing Wikidata's information in the process. 
 
 On the other hand, one of the core attractions of Wikidata is its open nature and interoperability. The custom ontologies created by Wikibase instances, meanwhile, can sometimes make it difficult to link records across instances. Facilitating precisely those links has been the concern of one recent project, [Wikibase World](https://wikibase.world/wiki/Project:Home).
+
+Wikidata's open nature, interoperability, and use of persistent identifiers makes it a good candidate to use as the basis for establishing links across museum and archive objects. 
 
 ## Congruence Engine 
 Congruence Engine worked with Wikidata and Wikibase at several points in time and across multiple investigations. The present tutorial emerged out of experiments conducted by the team which sought to understand how museum professionals and other interested individuals might use Wikidata as a way to facilitate links across museum collections. For this work, we experimented with a sample of objects drawn from three museum collections:
@@ -46,6 +46,7 @@ The key research questions of our experiment were as follows:
 * How can museum curators and researchers enhance Wikidata in order to better facilitate linkage?
 * What technical barriers exist currently which might prevent curators from contributing to Wikidata?
 
+The main focus of our work involved adding technical vocabulary about the textile industry to Wikidata, to demonstrate the value of this exercise for facilitating collections linkage. By enhancing vocabularies about museum artefacts that is freely available in Wikidata, we can contribute to the creation of richer links across cultural heritage collections. 
 
 ## Preparing your data
 You may be reading this tutorial simply to get to grips with the basics, but you may also wish to try out some of the steps below on data of your own. All you will need is an excel spreadsheet with a list of terms - in our case we worked with the catalogue names of museum objects, but you could use a list of businesses, people, places etc. depending on your project. You will need to prepare these as an excel spreadsheet or CSV file, and it is good practice to assign unique identifiers to each term at this stage.  
@@ -91,6 +92,61 @@ One of the biggest bottleknecks to adding large amounts of terms to Wikidata is 
 In our experiments, we tested the possibility of using a Large Language Model (LMM) to automatically generate the description fields for new items, thus substantially speeding up the process. We used Chat GPT to create around 50 definitions of specialised textile machinery terms, which were subsequently checked by a domain expert, who was satisfied with the results in all but a couple of cases. 
 
 ### Preparing your data for QuickStatements
-The easiest way to prepare your data for QuickStatements is using a spreadhseet. 
+The easiest way to prepare your data for QuickStatements is using a spreadhseet. OpenRefine has an in-built feature to prepare QuickStatements, which is [described here](https://openrefine.org/docs/manual/wikibase/overview#quickstatements-export) (bear in mind that this works only for the unsupported QuickStatements v.1). 
 
-### Using QuickStatements
+The first thing you need to do is to decide what statements or fields you wish to add to your items as part of an upload. You will then need to identify the relevant codes for each statement. Below are the codes for a few of the most common statements of relevance to cultural heritage:
+* instance of: P31
+* subclass of: P279
+* inception: P571
+* country: P17
+* creator: P170
+* collection: P195
+* inventory number: P217
+* width: P2049
+* height: P2048
+* described at URL: P973
+
+When preparing your data, you will want each of the fields you are intending to add to occupy a separate column in your spreadsheet. Perhaps you already have much of this data in spreadhseet format - otherwise this might take some preparation. The more detail you want to add, the greater the level of preparation. In our own experiment, we initially stuck to general statements that covered most of our items, e.g.:
+* instance of (P31): textile machinery
+* used by (P1535): textile worker
+* has use (P366): textile manufacturing
+
+The next step is to align the relevant values with Wikidata Qcodes. With small amounts of data, or where you are adding identical statements for large batches, this can be done manually. But in other cases the OpenRefine 'reconcile' function will again come in handy. You can work column by column, reconciling values and populating the cells which return a match with the pertinent Qcodes. 
+
+**Starting with a spreadsheet looking like this:**
+
+| label  |  description |  instance_of | country  | creator  |
+|---|---|---|---|---|
+|  Mona Lisa |  painting by Leonardo da Vinci |  painting |  France |  Leonardo da Vinci |
+|  The Garden of Earthly Delights |  triptych by Hieronymus Bosch |  painting | Spain  | Hieronymus Bosch  |
+
+**You will want to end up with something that looks like this:**
+
+| label  |  description |  instance_of | country  | creator  |
+|---|---|---|---|---|
+|  Mona Lisa |  painting by Leonardo da Vinci |  Q3305213 |  Q142 |  Q762 |
+|  The Garden of Earthly Delights |  triptych by Hieronymus Bosch |  Q3305213 | Q29  | Q130531  |
+
+
+### Building QuickStatements commands
+
+Once you have populated as many fields as possible with the relevant Qcodes, importing into QuickStatements is fairly straightforward. There are several different ways of doing this, but we found that a CSV import is the simplest method. 
+
+The first thing to do is to rename your column headers with the relevant codes for each statement. Your first column should be named 'qid', and should be left blank when creating new Wikidata items. The other key headers are:
+* Len: Label
+* Den: Description
+* Aen: Alias
+The -en suffix in each of these indicates that they are entered in English. You can find a complete list of Wikidata language codes [here](https://www.wikidata.org/wiki/Help:Wikimedia_language_codes/lists/all)
+
+Subsequent headers will indicate the property being added to an item. So, in our example above, our spreadsheet will now look like this:
+
+|qid| Len  |  Den |  P31 | P17  | P170  |
+|---|---|---|---|---|---|
+|| Mona Lisa |  painting by Leonardo da Vinci |  Q3305213 |  Q142 |  Q762 |
+| | The Garden of Earthly Delights |  triptych by Hieronymus Bosch |  Q3305213 | Q29  | Q130531  |
+
+You can find a sample csv file with pre-populated headers [here](link).
+
+
+
+
