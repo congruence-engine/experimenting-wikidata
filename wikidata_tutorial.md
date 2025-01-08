@@ -5,7 +5,7 @@ This tutorial outlines steps taken by the Congruence Engine team to upload batch
 
 
 ## What is Wikidata?
-Wikidata is a free and collaborative online knowledge base maintained by the Wikimedia Foundation. Unlike Wikipedia, which consists of text articles about notable objects, places, people etc, Wikidata contains structured data which is formatted according to strict rules. 
+[Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page) is a free and collaborative online knowledge base maintained by the Wikimedia Foundation. Unlike Wikipedia, which consists of text articles about notable objects, places, people etc, Wikidata contains structured data which is formatted according to strict rules. 
 
 Each Wikidata entry consists of a series of 'statements' which align with the Resource Description Framework (RDF). These statements take the form of triples, which is a method of describing relationships across entities in a way that is machine-readable.
 
