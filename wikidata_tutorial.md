@@ -145,7 +145,7 @@ Subsequent headers will indicate the property being added to an item. So, in our
 || Mona Lisa |  painting by Leonardo da Vinci |  Q3305213 |  Q142 |  Q762 |
 | | The Garden of Earthly Delights |  triptych by Hieronymus Bosch |  Q3305213 | Q29  | Q130531  |
 
-You can find a sample csv file with pre-populated headers [here](link).
+You can find a sample csv file with pre-populated headers [here](https://github.com/congruence-engine/experimenting-wikidata/blob/main/quickstatements_csv_template.csv).
 
 
 
