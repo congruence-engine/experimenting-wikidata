@@ -37,7 +37,7 @@ Investigation, Data curation, Formal analysis, Methodology, Writing
 
 ## Outputs
 
-- Tutorial for museum professionals on how to upload batches of items to Wikidata
+- [Tutorial](https://github.com/congruence-engine/experimenting-wikidata/blob/main/wikidata_tutorial.md) for museum professionals on how to upload batches of items to Wikidata
 - Upcoming book chapter in Congruence Engine edited collection. 
 
 
